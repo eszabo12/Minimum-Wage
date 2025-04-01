@@ -27,13 +27,11 @@ This is a lightweight Node.js package that:
 ### Install
 
 ```bash
-npm install state-minimum-wage
+npm install min-wage
 ```
 
-### Basic Usage
-
-```js
-const { getWages, getWageByState } = require('state-minimum-wage');
+### Basic Usage```js
+const { getWages, getWageByState } = require('min-wage');
 
 // Get all wages by state abbreviation
 const allWages = await getWages();
@@ -42,3 +40,4 @@ console.log(allWages);
 // Get wage by state name
 const nyWage = await getWageByState('New York');
 console.log(nyWage);
+
