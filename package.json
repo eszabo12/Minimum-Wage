@@ -1,5 +1,5 @@
 {
-  "name": "state-minimum-wage",
+  "name": "min-wage",
   "version": "1.0.0",
   "description": "Scrape department of labor minimum wages for all US states and territories!",
   "keywords": [
@@ -7,7 +7,7 @@
     "labor",
     "fintech"
   ],
-  "homepage": "https://github.com/eszabo12/Minimum-Wage#readme",
+  "homepage": "https://github.com/eszabo12/Minimum-Wage#README.md",
   "bugs": {
     "url": "https://github.com/eszabo12/Minimum-Wage/issues"
   },

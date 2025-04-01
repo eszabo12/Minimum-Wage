@@ -1,6 +1,9 @@
+// index.js
+
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { stateAbbrToName, stateNameToAbbr } from './utils.js';
+import { MINIMUM_COMBINED_WAGE, NEW_YORK_CITY_ZIP_CODES } from './wageData.js';
 
 const DOL_URL = 'https://www.dol.gov/agencies/whd/minimum-wage/state';
 
@@ -21,7 +24,7 @@ async function fetchRawStateData() {
   });
 
   if (!raw) throw new Error('State wage data not found.');
-  return eval(raw); // It's a JS array of objects, not JSON
+  return eval(raw);
 }
 
 export async function getWages({ fullName = false } = {}) {
@@ -30,29 +33,32 @@ export async function getWages({ fullName = false } = {}) {
 
   raw.forEach(({ State, Wage }) => {
     if (!Wage || Wage.trim() === '') return;
-
     const wage = parseFloat(Wage.replace('$', ''));
     const key = fullName ? stateAbbrToName[State] : State;
-
     if (key) {
-      map[fullName ? key : State] = wage;
+      map[key] = wage;
     }
   });
 
   return map;
 }
 
-export async function getWageByState(stateInput, { fullName = false } = {}) {
+export async function getWageByState(stateInput, { fullName = false, zipCode = null } = {}) {
+  // If zip is NYC zip, return NYC wage from combined map
+  if (zipCode && NEW_YORK_CITY_ZIP_CODES.has(zipCode)) {
+    return MINIMUM_COMBINED_WAGE.NY_NYC / 100;
+  }
+
   const wages = await getWages({ fullName });
-
-  if (!stateInput) return null;
-
   const key = fullName
     ? stateInput.trim()
     : stateInput.trim().toUpperCase();
 
   return wages[key] || null;
 }
+
+export { MINIMUM_COMBINED_WAGE, NEW_YORK_CITY_ZIP_CODES };
+
 
 // Example usage
 // getWages({ fullName: true }).then(console.log);
