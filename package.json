@@ -1,6 +1,6 @@
 {
   "name": "min-wage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scrape department of labor minimum wages for all US states and territories!",
   "keywords": [
     "payroll",
