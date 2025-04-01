@@ -41,3 +41,6 @@ console.log(allWages);
 const nyWage = await getWageByState('New York');
 console.log(nyWage);
 
+// Example usage with ZIP codes
+// getWageByState('NY', { zipCode: '10001' }).then(console.log); 
+// getWageByState('NY', { zipCode: '12201' }).then(console.log);
