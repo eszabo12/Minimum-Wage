@@ -63,3 +63,8 @@ export { MINIMUM_COMBINED_WAGE, NEW_YORK_CITY_ZIP_CODES };
 // Example usage
 // getWages({ fullName: true }).then(console.log);
 // getWageByState('California', { fullName: true }).then(console.log);
+// Example usage with ZIP codes
+// NYC zip (Manhattan)
+// getWageByState('NY', { zipCode: '10001' }).then(console.log); 
+// Non-NYC zip (Albany)
+// getWageByState('NY', { zipCode: '12201' }).then(console.log);
