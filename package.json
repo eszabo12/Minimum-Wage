@@ -18,10 +18,16 @@
   },
   "license": "MIT",
   "author": "Elle S.",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "build": "tsc && cp scripts/index.cjs dist/index.cjs",
+    "test": "node dist/index.js"
+  },
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
   },
   "dependencies": {
     "axios": "^1.6.0",

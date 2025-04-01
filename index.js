@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { stateAbbrToName, stateNameToAbbr } from './utils.js';
+import { stateAbbrToName, stateNameToAbbr } from './src/utils.js';
 import { MINIMUM_COMBINED_WAGE, NEW_YORK_CITY_ZIP_CODES } from './wageData.js';
 
 const DOL_URL = 'https://www.dol.gov/agencies/whd/minimum-wage/state';
